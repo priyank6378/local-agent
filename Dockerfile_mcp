@@ -1,0 +1,22 @@
+FROM ubuntu
+
+RUN apt-get update && \
+    apt-get install -y python3 curl ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+
+ENV PATH="/root/.local/bin:$PATH"
+ENV OLLAMA_HOST=http://host.docker.internal:11434
+
+WORKDIR /app/priyank/mcp_server
+
+COPY pyproject.toml /app/priyank/mcp_server
+
+COPY mcp_server/* ./
+
+RUN ls
+
+RUN uv sync
+
+CMD [ "uv", "run" , "python", "mcp_server.py" ]

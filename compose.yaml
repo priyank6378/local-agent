@@ -1,0 +1,36 @@
+
+name: my_ai_agent
+
+services:
+  agent:
+    build: .
+    image: agent:1.0
+    container_name: main_agent
+    ports: 
+      - "8000:8000"
+    environment:
+      mcp_server_url: http://mcp_server:8000
+
+  mcp_server:
+    build: 
+      dockerfile: Dockerfile_mcp
+    image: mcp_server:1.0
+    container_name: agent_mcp_server
+    environment:
+      - FASTMCP_PORT=8001
+
+  postgres:
+    image: postgres:17
+    container_name: agent_postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=a
+      - POSTGRES_DB=langchain_learning
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+
+volumes: 
+  postgres_data:

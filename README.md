@@ -1,0 +1,23 @@
+# Local Agent
+This is a local agent that can be used to run LangChain agents locally. It is built using FastAPI and Docker.
+
+## Current Status
+- Only initial setup is done.
+- Agent is working.
+- Agent have memory. 
+
+## Future Plans
+- Add more tools in mcp server
+- Add more error handling and logging to the agent
+- Add streaming API
+- Add chainlit ui
+- May add more features like voice support, etc.
+
+## To Start The Local Agent
+`docker compose up`
+
+## To Access The Local Agent
+Swagger UI : `http://localhost:8000/docs`
+
+## Pre-requisites
+- Docker installed on your machine

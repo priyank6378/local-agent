@@ -16,7 +16,14 @@ This is a local agent that can be used to run LangChain agents locally. It is bu
 - May add more features like voice support, etc.
 
 ## To Start The Local Agent
+### Docker
 `docker compose up`
+
+### Directly
+`uv venv`
+`uv sync`
+`cd fast_api_agent`
+`uv run fastapi run api_endpoints.py`
 
 ## To Access The Local Agent
 Swagger UI : `http://localhost:8000/docs`
